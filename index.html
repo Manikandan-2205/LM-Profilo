@@ -19,11 +19,11 @@
             --primary: #D4AF37;
             --primary-dark: #B8860B;
             --primary-light: #FFDF00;
-            --secondary: #f8f9fa; /* was #1a1a1a */
-            --light: #ffffff; /* was #f8f9fa */
+            --secondary: #f8f9fa;
+            --light: #ffffff;
             --dark: #2d3748;
-            --text: #2d3748; /* was #ffffff */
-            --text-light: #5a6878; /* was #cccccc */
+            --text: #2d3748;
+            --text-light: #5a6878;
         }
 
         body {
@@ -33,9 +33,9 @@
             overflow-x: hidden;
         }
 
-        /* Navbar Styles - McLaren Inspired */
+        /* Navbar Styles - Enhanced with Radius */
         .navbar {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 1.2rem 3rem;
             position: fixed;
             width: 100%;
@@ -44,12 +44,16 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.98);
             padding: 0.8rem 3rem;
             backdrop-filter: blur(15px);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -84,7 +88,7 @@
         }
 
         .nav-item {
-            margin-left: 1.8rem;
+            margin-left: 1.2rem;
             position: relative;
         }
 
@@ -309,15 +313,133 @@
             display: block;
         }
 
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        /* Product Showcase Section - BookMyShow Style */
+        .product-showcase {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            border-radius: 20px;
+            margin: 4rem auto;
+            max-width: 1400px;
+        }
+
+        .showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .showcase-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .showcase-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .showcase-controls button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .showcase-controls button:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .showcase-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .showcase-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            padding: 1rem 0;
+        }
+
+        .product-card {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .product-badge {
+            background: var(--primary);
             color: white;
-            font-size: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
@@ -461,10 +583,9 @@
             color: var(--text-light);
             line-height: 1.6;
         }
-        
 
         /* Responsive Styles */
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .navbar {
                 padding: 1rem 2rem;
             }
@@ -474,13 +595,14 @@
                 left: -100%;
                 top: 80px;
                 flex-direction: column;
-                background-color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255, 0.95);
                 width: 100%;
                 text-align: center;
                 transition: 0.4s;
                 padding: 2rem 0;
                 backdrop-filter: blur(15px);
                 border-top: 1px solid rgba(212, 175, 55, 0.2);
+                border-radius: 0 0 20px 20px;
             }
 
             .nav-menu.active {
@@ -525,9 +647,13 @@
             .mv-container {
                 grid-template-columns: 1fr;
             }
+            
+            .product-card {
+                flex: 0 0 280px;
+            }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .navbar {
                 padding: 0.8rem 1.5rem;
             }
@@ -558,6 +684,40 @@
 
             .mv-card {
                 padding: 2rem;
+            }
+            
+            .showcase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            
+            .showcase-header h2 {
+                font-size: 2rem;
+            }
+            
+            .product-card {
+                flex: 0 0 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-showcase {
+                padding: 4rem 1rem;
+            }
+            
+            .product-card {
+                flex: 0 0 220px;
+            }
+            
+            .showcase-controls {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+            
+            .showcase-controls button {
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -616,6 +776,99 @@
                 <div class="about-image">
                     <!-- You can replace this with an actual image of your factory or team -->
                     <img src="https://images.pexels.com/photos/3912944/pexels-photo-3912944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lakshmi Tex Manufacturing Facility">
+                </div>
+            </div>
+
+            <!-- Product Showcase Section -->
+            <div class="product-showcase" data-aos="fade-up">
+                <div class="showcase-header">
+                    <h2>Our Premium Products</h2>
+                    <div class="showcase-controls">
+                        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="showcase-container">
+                    <div class="showcase-track">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Athleisure Wear">
+                            </div>
+                            <div class="product-info">
+                                <h3>Athleisure Collection</h3>
+                                <p>Comfort meets style in our premium athleisure line</p>
+                                <div class="product-price">
+                                    <span class="price">$29.99</span>
+                                    <span class="product-badge">Bestseller</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hosiery Garments">
+                            </div>
+                            <div class="product-info">
+                                <h3>Premium Hosiery</h3>
+                                <p>Soft, durable hosiery for everyday comfort</p>
+                                <div class="product-price">
+                                    <span class="price">$19.99</span>
+                                    <span class="product-badge">New</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/3738086/pexels-photo-3738086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Fashion Wear">
+                            </div>
+                            <div class="product-info">
+                                <h3>Fashion Line</h3>
+                                <p>Trend-setting designs for the modern consumer</p>
+                                <div class="product-price">
+                                    <span class="price">$39.99</span>
+                                    <span class="product-badge">Limited</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/6054037/pexels-photo-6054037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Kids Collection">
+                            </div>
+                            <div class="product-info">
+                                <h3>Kids Collection</h3>
+                                <p>Colorful, comfortable clothing for children</p>
+                                <div class="product-price">
+                                    <span class="price">$24.99</span>
+                                    <span class="product-badge">Popular</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/3738353/pexels-photo-3738353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Winter Wear">
+                            </div>
+                            <div class="product-info">
+                                <h3>Winter Collection</h3>
+                                <p>Warm and stylish clothing for colder seasons</p>
+                                <div class="product-price">
+                                    <span class="price">$49.99</span>
+                                    <span class="product-badge">Seasonal</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.pexels.com/photos/3738083/pexels-photo-3738083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sportswear">
+                            </div>
+                            <div class="product-info">
+                                <h3>Performance Sportswear</h3>
+                                <p>High-performance fabrics for active lifestyles</p>
+                                <div class="product-price">
+                                    <span class="price">$34.99</span>
+                                    <span class="product-badge">Featured</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -837,6 +1090,29 @@
 
         observer.observe(statsSection);
 
+        // Product Showcase Carousel
+        const track = document.querySelector('.showcase-track');
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const cardWidth = productCards[0].offsetWidth + 32; // width + gap
+        
+        let position = 0;
+        const maxPosition = -((productCards.length - 3) * cardWidth);
+        
+        nextBtn.addEventListener('click', () => {
+            if (position > maxPosition) {
+                position -= cardWidth;
+                track.style.transform = `translateX(${position}px)`;
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (position < 0) {
+                position += cardWidth;
+                track.style.transform = `translateX(${position}px)`;
+            }
+        });
 
         // Video fallback for unsupported browsers
         const video = document.getElementById('bg-video');
