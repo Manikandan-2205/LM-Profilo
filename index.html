@@ -17,12 +17,20 @@
     rel="stylesheet"
   />
 
+  <!-- Font Awesome Icons (free) -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <style>
     :root {
       --lm-primary: #1b3c53;
       --lm-secondary: #234c6a;
       --lm-bg-light: #e3e3e3;
       --lm-accent: #3e7cb1;
+      --lm-subnav-bg: #f8f9fa;
+      --lm-subnav-active: #e9ecef;
     }
 
     * {
@@ -34,7 +42,6 @@
         "Segoe UI", sans-serif;
       background: var(--lm-bg-light);
       color: #102131;
-      /* padding-top removed so video can go full height under navbar */
       margin: 0;
     }
 
@@ -80,11 +87,25 @@
     .nav-link {
       font-weight: 500;
       color: #243648 !important;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .nav-link:hover,
     .nav-link:focus {
       color: var(--lm-secondary) !important;
+    }
+
+    .nav-link.active {
+      color: var(--lm-secondary) !important;
+      font-weight: 600;
+    }
+
+    .nav-link i {
+      width: 18px;
+      text-align: center;
+      font-size: 0.9rem;
     }
 
     .btn-cta {
@@ -109,7 +130,7 @@
       align-items: center;
       color: #ffffff;
       overflow: hidden;
-      padding: 0; /* remove default section padding so video is full height */
+      padding: 0;
     }
 
     #hero video.bg-video {
@@ -135,7 +156,7 @@
     }
 
     .hero-content {
-      padding: 6rem 0 3rem; /* more top padding so content is below navbar */
+      padding: 6rem 0 3rem;
     }
 
     .hero-badge {
@@ -217,12 +238,15 @@
 
     /* SUMMARY SUB NAVBAR (inside summary section) */
     .summary-subnav {
-      background: rgba(255, 255, 255, 0.98);
+      background: var(--lm-subnav-bg);
       border-radius: 999px;
       border: 1px solid rgba(0, 0, 0, 0.05);
       box-shadow: 0 10px 30px rgba(15, 37, 54, 0.08);
       padding: 0.25rem;
       margin-bottom: 1.75rem;
+      z-index: 1040;
+      position: sticky;
+      top: 80px;
     }
 
     .summary-subnav .nav-link {
@@ -230,16 +254,20 @@
       font-size: 0.9rem;
       padding: 0.45rem 0.9rem;
       color: #43566c !important;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     .summary-subnav .nav-link.active,
     .summary-subnav .nav-link:hover {
-      background: linear-gradient(
-        135deg,
-        rgba(27, 60, 83, 0.12),
-        rgba(35, 76, 106, 0.12)
-      );
+      background: var(--lm-subnav-active);
       color: var(--lm-secondary) !important;
+    }
+
+    .summary-subnav .nav-link i {
+      font-size: 0.8rem;
+      width: 16px;
     }
 
     .summary-subnav-title {
@@ -249,6 +277,9 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 0.3rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     /* SECTIONS (all others) */
@@ -257,7 +288,6 @@
       background: #f6f7f9;
     }
 
-    /* hero already has its own padding rule */
     #hero {
       background: transparent;
     }
@@ -339,6 +369,14 @@
       .hero-subtitle {
         font-size: 0.95rem;
       }
+      
+      .summary-subnav {
+        top: 70px;
+      }
+      
+      .nav-link {
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 575.98px) {
@@ -353,6 +391,15 @@
       .summary-subnav-title {
         display: none;
       }
+      
+      .summary-subnav {
+        top: 60px;
+      }
+      
+      .summary-subnav .nav-link {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -360,7 +407,7 @@
   <!-- MAIN NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top main-nav">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#hero">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
         <div class="navbar-brand-logo">LM</div>
         <span class="navbar-brand-text">LM Mills</span>
       </a>
@@ -380,23 +427,41 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#hero">Home</a>
+            <a class="nav-link active" href="index.html">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="about.html">
+              <i class="fas fa-building"></i>
+              <span>About</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#products">Products</a>
+            <a class="nav-link" href="products.html">
+              <i class="fas fa-tshirt"></i>
+              <span>Products</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#infrastructure">Infrastructure</a>
+            <a class="nav-link" href="infrastructure.html">
+              <i class="fas fa-industry"></i>
+              <span>Infrastructure</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="contact.html">
+              <i class="fas fa-envelope"></i>
+              <span>Contact</span>
+            </a>
           </li>
         </ul>
         <div class="d-none d-lg-flex ms-3">
-          <button class="btn btn-cta">Request a Sample</button>
+          <button class="btn btn-cta">
+            <i class="fas fa-box-open me-2"></i>
+            Request a Sample
+          </button>
         </div>
       </div>
     </div>
@@ -419,7 +484,7 @@
       <div class="row">
         <div class="col-lg-7 col-md-9">          
           <h1 class="hero-title">
-            Chaos doesn’t scale.<br />
+            Chaos doesn't scale.<br />
             <span class="hero-gradient-text">Consistent textiles do.</span>
           </h1>
           <p class="hero-subtitle">
@@ -440,8 +505,12 @@
           </div>
 
           <div class="d-flex flex-wrap gap-2 mt-4">
-            <a href="#products" class="btn btn-cta">Explore Products</a>
+            <a href="#products" class="btn btn-cta">
+              <i class="fas fa-search me-2"></i>
+              Explore Products
+            </a>
             <a href="#summary" class="btn btn-outline-light">
+              <i class="fas fa-info-circle me-2"></i>
               Learn about LM Mills
             </a>
           </div>
@@ -456,22 +525,31 @@
 
       <!-- SUB NAVBAR comes BEFORE summary content -->
       <div class="summary-subnav sticky-top">
-        <div class="d-flex flex-wrap align-items-center">
-          <div class="summary-subnav-title me-2">
-            LM Mills • Home Summary
-          </div>
+        <div class="d-flex flex-wrap align-items-center">         
           <ul class="nav flex-wrap">
             <li class="nav-item">
-              <a class="nav-link active" href="#summary">Home Summary</a>
+              <a class="nav-link active" href="#summary">
+                <i class="fas fa-home"></i>
+                <span>Home Summary</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#history">History</a>
+              <a class="nav-link" href="#history">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#what-we-are">What We Are</a>
+              <a class="nav-link" href="#what-we-are">
+                <i class="fas fa-info-circle"></i>
+                <span>What We Are</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#infrastructure">Infrastructure</a>
+              <a class="nav-link" href="#infrastructure">
+                <i class="fas fa-industry"></i>
+                <span>Infrastructure</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -485,7 +563,9 @@
       <div class="row g-4">
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🏭</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-industry"></i>
+            </div>
             <h5>End-to-end textile expertise</h5>
             <p class="mb-0">
               Spinning, weaving, processing and finishing under one roof to
@@ -495,7 +575,9 @@
         </div>
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">📦</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-boxes"></i>
+            </div>
             <h5>Flexible production runs</h5>
             <p class="mb-0">
               From boutique quantities to large international orders, LM Mills
@@ -505,7 +587,9 @@
         </div>
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🌱</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-leaf"></i>
+            </div>
             <h5>Sustainable mindset</h5>
             <p class="mb-0">
               Optimized water, energy and chemical usage that align with
@@ -556,7 +640,9 @@
       <div class="row g-4">
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">👕</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-tshirt"></i>
+            </div>
             <h5>Apparel fabrics</h5>
             <p class="mb-0">
               Cotton, blends and stretch fabrics designed for comfort and modern
@@ -566,7 +652,9 @@
         </div>
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🏠</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-home"></i>
+            </div>
             <h5>Home textiles</h5>
             <p class="mb-0">
               Sheeting, towels and upholstery bases produced for durability,
@@ -576,7 +664,9 @@
         </div>
         <div class="col-md-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🧵</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-tools"></i>
+            </div>
             <h5>Specialty & technical</h5>
             <p class="mb-0">
               High-performance fabrics for workwear and industrial use with
@@ -596,7 +686,9 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🧶</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-spinner"></i>
+            </div>
             <h5>Spinning & weaving</h5>
             <p class="mb-0">
               Modern spinning frames and air-jet/rapier looms give us the
@@ -606,7 +698,9 @@
         </div>
         <div class="col-lg-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">🧪</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-flask"></i>
+            </div>
             <h5>Processing & finishing</h5>
             <p class="mb-0">
               Continuous bleaching, dyeing and finishing lines tuned for shade
@@ -616,7 +710,9 @@
         </div>
         <div class="col-lg-4">
           <div class="feature-card">
-            <div class="feature-icon-circle">📊</div>
+            <div class="feature-icon-circle">
+              <i class="fas fa-chart-line"></i>
+            </div>
             <h5>Digital quality tracking</h5>
             <p class="mb-0">
               Inline inspections, lab testing and real-time dashboards make our
@@ -632,16 +728,22 @@
   <section id="contact">
     <div class="container">
       <span class="pill-tag">Contact</span>
-      <h2 class="section-title">Let’s talk about your next fabric program.</h2>
+      <h2 class="section-title">Let's talk about your next fabric program.</h2>
       <div class="row g-4">
         <div class="col-lg-6">
           <form>
             <div class="mb-3">
-              <label class="form-label">Name</label>
+              <label class="form-label">
+                <i class="fas fa-user me-1"></i>
+                Name
+              </label>
               <input type="text" class="form-control" placeholder="Your name" />
             </div>
             <div class="mb-3">
-              <label class="form-label">Email</label>
+              <label class="form-label">
+                <i class="fas fa-envelope me-1"></i>
+                Email
+              </label>
               <input
                 type="email"
                 class="form-control"
@@ -649,7 +751,10 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Message</label>
+              <label class="form-label">
+                <i class="fas fa-comment me-1"></i>
+                Message
+              </label>
               <textarea
                 class="form-control"
                 rows="4"
@@ -657,19 +762,31 @@
               ></textarea>
             </div>
             <button type="submit" class="btn btn-cta">
+              <i class="fas fa-paper-plane me-2"></i>
               Send enquiry
             </button>
           </form>
         </div>
         <div class="col-lg-6">
-          <h5>LM Mills – Head Office</h5>
+          <h5>
+            <i class="fas fa-building me-2"></i>
+            LM Mills – Head Office
+          </h5>
           <p>
+            <i class="fas fa-map-marker-alt me-2"></i>
             (Your address line here)<br />
             City, State, Country<br />
           </p>
-          <p class="mb-1">Phone: +91-00000-00000</p>
-          <p class="mb-3">Email: sales@lmmills.example</p>
+          <p class="mb-1">
+            <i class="fas fa-phone me-2"></i>
+            Phone: +91-00000-00000
+          </p>
+          <p class="mb-3">
+            <i class="fas fa-envelope me-2"></i>
+            Email: sales@lmmills.example
+          </p>
           <p class="mb-0">
+            <i class="fas fa-clock me-2"></i>
             We typically respond within one business day for all fabric
             enquiries, sampling requests and capacity planning.
           </p>
@@ -681,9 +798,13 @@
   <!-- FOOTER -->
   <footer>
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <div>© <span id="year"></span> LM Mills. All rights reserved.</div>
       <div>
-        Made for LM Mills • Inspired by Azure’s clean, connected experience.
+        <i class="fas fa-copyright me-1"></i>
+        <span id="year"></span> LM Mills. All rights reserved.
+      </div>
+      <div>
+        <i class="fas fa-heart me-1"></i>
+        Made for LM Mills • Inspired by Azure's clean, connected experience.
       </div>
     </div>
   </footer>
