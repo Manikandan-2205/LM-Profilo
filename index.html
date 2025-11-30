@@ -282,6 +282,96 @@
       gap: 0.5rem;
     }
 
+    /* ACHIEVEMENT COUNTERS */
+    .achievement-section {
+      background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+      color: white;
+      padding: 4rem 0;
+    }
+
+    .achievement-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .achievement-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .achievement-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* CLIENTS SECTION */
+    .clients-section {
+      padding: 4rem 0;
+      background: #ffffff;
+    }
+
+    .client-logo {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      filter: grayscale(100%);
+      transition: all 0.3s ease;
+    }
+
+    .client-logo:hover {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .client-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* NEWS TICKER */
+    .news-ticker {
+      background: var(--lm-primary);
+      color: white;
+      padding: 0.75rem 0;
+      overflow: hidden;
+    }
+
+    .ticker-container {
+      display: flex;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-item {
+      white-space: nowrap;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-item i {
+      margin-right: 0.5rem;
+      color: var(--lm-accent);
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
     /* SECTIONS (all others) */
     section {
       padding: 4rem 0;
@@ -321,6 +411,12 @@
       box-shadow: 0 18px 40px rgba(15, 37, 54, 0.06);
       border: 1px solid rgba(15, 37, 54, 0.03);
       height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(15, 37, 54, 0.1);
     }
 
     .feature-icon-circle {
@@ -341,19 +437,72 @@
 
     /* FOOTER */
     footer {
-      padding: 2.5rem 0 1.5rem;
+      padding: 3rem 0 1.5rem;
       background: #0a1722;
       color: #c9d2de;
       font-size: 0.9rem;
     }
 
-    footer a {
-      color: #e8f2ff;
-      text-decoration: none;
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #c9d2de;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #c9d2de;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--lm-accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     /* RESPONSIVE TWEAKS */
@@ -399,6 +548,10 @@
       .summary-subnav .nav-link {
         padding: 0.35rem 0.7rem;
         font-size: 0.85rem;
+      }
+      
+      .achievement-number {
+        font-size: 2rem;
       }
     }
   </style>
@@ -519,6 +672,94 @@
     </div>
   </section>
 
+  <!-- ACHIEVEMENT COUNTERS -->
+  <section class="achievement-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="achievement-number" data-count="350">0</div>
+            <div class="achievement-label">Satisfied Clients</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="achievement-number" data-count="42">0</div>
+            <div class="achievement-label">Countries Served</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div class="achievement-number" data-count="25">0</div>
+            <div class="achievement-label">Years Experience</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="achievement-number" data-count="98">0</div>
+            <div class="achievement-label">On-Time Delivery</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="achievement-number" data-count="15">0</div>
+            <div class="achievement-label">Industry Awards</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="achievement-card">
+            <div class="achievement-icon">
+              <i class="fas fa-recycle"></i>
+            </div>
+            <div class="achievement-number" data-count="85">0</div>
+            <div class="achievement-label">Sustainable Practices</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS TICKER -->
+  <div class="news-ticker">
+    <div class="ticker-container">
+      <div class="ticker-item">
+        <i class="fas fa-newspaper"></i>
+        LM Mills wins "Sustainable Textile Manufacturer of the Year" award
+      </div>
+      <div class="ticker-item">
+        <i class="fas fa-newspaper"></i>
+        New production line increases capacity by 30%
+      </div>
+      <div class="ticker-item">
+        <i class="fas fa-newspaper"></i>
+        Partnership announced with major European fashion brand
+      </div>
+      <div class="ticker-item">
+        <i class="fas fa-newspaper"></i>
+        LM Mills achieves ISO 9001:2015 certification
+      </div>
+      <div class="ticker-item">
+        <i class="fas fa-newspaper"></i>
+        New eco-friendly dyeing process reduces water usage by 40%
+      </div>
+    </div>
+  </div>
+
   <!-- HOME PAGE SUMMARY + SUB NAVBAR -->
   <section id="summary">
     <div class="container">
@@ -595,6 +836,45 @@
               Optimized water, energy and chemical usage that align with
               leading global compliance standards.
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS SECTION -->
+  <section class="clients-section">
+    <div class="container">
+      <span class="pill-tag">Our Partners</span>
+      <h2 class="section-title">Trusted by leading brands worldwide</h2>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-3 col-6">
+          <div class="client-logo">
+            <!-- Placeholder for client logo - replace with actual images -->
+            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+              <span style="color: #666; font-weight: 600;">FASHION CO</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="client-logo">
+            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+              <span style="color: #666; font-weight: 600;">HOME TEXTILES</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="client-logo">
+            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+              <span style="color: #666; font-weight: 600;">TECH WEAR</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="client-logo">
+            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+              <span style="color: #666; font-weight: 600;">GLOBAL BRAND</span>
+            </div>
           </div>
         </div>
       </div>
@@ -797,14 +1077,86 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <div>
-        <i class="fas fa-copyright me-1"></i>
-        <span id="year"></span> LM Mills. All rights reserved.
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="footer-logo">LM Mills</div>
+          <p>Turning yarn into reliable fabrics for global fashion, home and technical brands.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#history">History</a></li>
+              <li><a href="#infrastructure">Infrastructure</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">News</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h5>Products</h5>
+            <ul>
+              <li><a href="products.html">Apparel Fabrics</a></li>
+              <li><a href="products.html">Home Textiles</a></li>
+              <li><a href="products.html">Technical Textiles</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Request Samples</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Quality Standards</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-4">
+          <div class="footer-links">
+            <h5>Legal</h5>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">Compliance</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div>
-        <i class="fas fa-heart me-1"></i>
-        Made for LM Mills • Inspired by Azure's clean, connected experience.
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div>
+          <i class="fas fa-copyright me-1"></i>
+          <span id="year"></span> LM Mills. All rights reserved.
+        </div>
+        <div>
+          <i class="fas fa-heart me-1"></i>
+          Made for LM Mills • Inspired by Azure's clean, connected experience.
+        </div>
       </div>
     </div>
   </footer>
@@ -835,6 +1187,49 @@
       // Current year
       document.getElementById("year").textContent =
         new Date().getFullYear();
+
+      // Achievement counter animation
+      function animateCounter() {
+        const counters = document.querySelectorAll('.achievement-number');
+        const speed = 200; // The lower the slower
+        
+        counters.forEach(counter => {
+          const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            
+            // Lower inc to slow and higher to slow
+            const inc = target / speed;
+            
+            // Check if target is reached
+            if (count < target) {
+              // Add inc to count and output in counter
+              counter.innerText = Math.ceil(count + inc);
+              // Call function every ms
+              setTimeout(updateCount, 1);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          
+          updateCount();
+        });
+      }
+      
+      // Start counter animation when section is in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      const achievementSection = document.querySelector('.achievement-section');
+      if (achievementSection) {
+        observer.observe(achievementSection);
+      }
     });
 
     // Scroll behavior: hide main nav after hero, show before hero
