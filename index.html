@@ -1,1262 +1,949 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>LM Mills - Textile Solutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Bootstrap CSS (free) -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- Google Font (optional, free) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Font Awesome Icons (free) -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-
-  <style>
-    :root {
-      --lm-primary: #1b3c53;
-      --lm-secondary: #234c6a;
-      --lm-bg-light: #e3e3e3;
-      --lm-accent: #3e7cb1;
-      --lm-subnav-bg: #f8f9fa;
-      --lm-subnav-active: #e9ecef;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: var(--lm-bg-light);
-      color: #102131;
-      margin: 0;
-    }
-
-    /* MAIN NAVBAR */
-    .main-nav {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: 0 8px 20px rgba(15, 37, 54, 0.04);
-      z-index: 1050;
-    }
-
-    .main-nav.nav-hidden {
-      transform: translateY(-100%);
-      box-shadow: none;
-    }
-
-    .navbar-brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      background: linear-gradient(
-        135deg,
-        var(--lm-primary),
-        var(--lm-secondary)
-      );
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 20px;
-      margin-right: 0.4rem;
-    }
-
-    .navbar-brand-text {
-      font-weight: 700;
-      color: var(--lm-primary);
-      letter-spacing: 0.04em;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      color: #243648 !important;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus {
-      color: var(--lm-secondary) !important;
-    }
-
-    .nav-link.active {
-      color: var(--lm-secondary) !important;
-      font-weight: 600;
-    }
-
-    .nav-link i {
-      width: 18px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    .btn-cta {
-      background: var(--lm-primary);
-      color: #ffffff;
-      border-radius: 999px;
-      padding-inline: 1.25rem;
-      font-weight: 600;
-      border: none;
-    }
-
-    .btn-cta:hover {
-      background: var(--lm-secondary);
-      color: #ffffff;
-    }
-
-    /* HERO SECTION (FULL PAGE VIDEO) */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      color: #ffffff;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    #hero video.bg-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(11, 25, 37, 0.9),
-        rgba(11, 25, 37, 0.6),
-        rgba(35, 76, 106, 0.35)
-      );
-      z-index: -1;
-    }
-
-    .hero-content {
-      padding: 6rem 0 3rem;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 0.8rem;
-      color: #e9f3ff;
-      margin-bottom: 1rem;
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2ecc71;
-    }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 3.2vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-gradient-text {
-      background: linear-gradient(135deg, #ffffff, #e3f2ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      max-width: 34rem;
-      color: #d6e3f3;
-    }
-
-    .typed-wrapper {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #f3fbff;
-      margin-top: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .typed-label {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #c0d8f3;
-      font-weight: 600;
-    }
-
-    .typed-cursor {
-      font-size: 1.2rem;
-      color: var(--lm-accent);
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-    }
-
-    .hero-pill {
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(233, 243, 255, 0.55);
-      color: #e9f3ff;
-    }
-
-    /* SUMMARY SUB NAVBAR (inside summary section) */
-    .summary-subnav {
-      background: var(--lm-subnav-bg);
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 10px 30px rgba(15, 37, 54, 0.08);
-      padding: 0.25rem;
-      margin-bottom: 1.75rem;
-      z-index: 1040;
-      position: sticky;
-      top: 80px;
-    }
-
-    .summary-subnav .nav-link {
-      border-radius: 999px;
-      font-size: 0.9rem;
-      padding: 0.45rem 0.9rem;
-      color: #43566c !important;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .summary-subnav .nav-link.active,
-    .summary-subnav .nav-link:hover {
-      background: var(--lm-subnav-active);
-      color: var(--lm-secondary) !important;
-    }
-
-    .summary-subnav .nav-link i {
-      font-size: 0.8rem;
-      width: 16px;
-    }
-
-    .summary-subnav-title {
-      font-weight: 600;
-      color: var(--lm-secondary);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* ACHIEVEMENT COUNTERS */
-    .achievement-section {
-      background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
-      color: white;
-      padding: 4rem 0;
-    }
-
-    .achievement-card {
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    .achievement-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .achievement-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .achievement-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    /* CLIENTS SECTION */
-    .clients-section {
-      padding: 4rem 0;
-      background: #ffffff;
-    }
-
-    .client-logo {
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      filter: grayscale(100%);
-      transition: all 0.3s ease;
-    }
-
-    .client-logo:hover {
-      filter: grayscale(0%);
-      transform: scale(1.05);
-    }
-
-    .client-logo img {
-      max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
-    }
-
-    /* NEWS TICKER */
-    .news-ticker {
-      background: var(--lm-primary);
-      color: white;
-      padding: 0.75rem 0;
-      overflow: hidden;
-    }
-
-    .ticker-container {
-      display: flex;
-      animation: ticker 30s linear infinite;
-    }
-
-    .ticker-item {
-      white-space: nowrap;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-item i {
-      margin-right: 0.5rem;
-      color: var(--lm-accent);
-    }
-
-    @keyframes ticker {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* SECTIONS (all others) */
-    section {
-      padding: 4rem 0;
-      background: #f6f7f9;
-    }
-
-    #hero {
-      background: transparent;
-    }
-
-    section:nth-of-type(even) {
-      background: #ffffff;
-    }
-
-    .section-title {
-      font-weight: 700;
-      color: var(--lm-primary);
-      margin-bottom: 1.5rem;
-    }
-
-    .pill-tag {
-      display: inline-flex;
-      padding: 0.15rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      background: rgba(35, 76, 106, 0.07);
-      color: #546b86;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-card {
-      border-radius: 1.25rem;
-      padding: 1.5rem;
-      background: #ffffff;
-      box-shadow: 0 18px 40px rgba(15, 37, 54, 0.06);
-      border: 1px solid rgba(15, 37, 54, 0.03);
-      height: 100%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 50px rgba(15, 37, 54, 0.1);
-    }
-
-    .feature-icon-circle {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(
-        135deg,
-        rgba(27, 60, 83, 0.15),
-        rgba(35, 76, 106, 0.05)
-      );
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 3rem 0 1.5rem;
-      background: #0a1722;
-      color: #c9d2de;
-      font-size: 0.9rem;
-    }
-
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links h5 {
-      color: white;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links a {
-      color: #c9d2de;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      color: #c9d2de;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      background: var(--lm-accent);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    /* RESPONSIVE TWEAKS */
-    @media (max-width: 991.98px) {
-      .hero-content {
-        padding-top: 5rem;
-      }
-
-      .hero-title {
-        font-size: 2.1rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.95rem;
-      }
-      
-      .summary-subnav {
-        top: 70px;
-      }
-      
-      .nav-link {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .summary-subnav-title {
-        display: none;
-      }
-      
-      .summary-subnav {
-        top: 60px;
-      }
-      
-      .summary-subnav .nav-link {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.85rem;
-      }
-      
-      .achievement-number {
-        font-size: 2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- MAIN NAVBAR -->
-  <nav class="navbar navbar-expand-lg fixed-top main-nav">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <div class="navbar-brand-logo">LM</div>
-        <span class="navbar-brand-text">LM Mills</span>
-      </a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">
-              <i class="fas fa-home"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">
-              <i class="fas fa-building"></i>
-              <span>About</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="products.html">
-              <i class="fas fa-tshirt"></i>
-              <span>Products</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="infrastructure.html">
-              <i class="fas fa-industry"></i>
-              <span>Infrastructure</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">
-              <i class="fas fa-envelope"></i>
-              <span>Contact</span>
-            </a>
-          </li>
-        </ul>
-        <div class="d-none d-lg-flex ms-3">
-          <button class="btn btn-cta">
-            <i class="fas fa-box-open me-2"></i>
-            Request a Sample
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO WITH FULL PAGE VIDEO -->
-  <section id="hero">
-    <!-- Your full-page video -->
-    <video class="bg-video" autoplay muted loop playsinline>
-      <source
-        src="assets/videos/videoplayback.mp4"
-        type="video/mp4"
-      />
-      Your browser does not support the video tag.
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <div class="container hero-content">
-      <div class="row">
-        <div class="col-lg-7 col-md-9">          
-          <h1 class="hero-title">
-            Chaos doesn't scale.<br />
-            <span class="hero-gradient-text">Consistent textiles do.</span>
-          </h1>
-          <p class="hero-subtitle">
-            LM Mills turns yarn into reliable fabrics for global fashion, home
-            and technical brands – with every meter tracked like a cloud
-            workload.
-          </p>
-
-          <div class="typed-wrapper">
-            <span class="typed-label">We deliver</span>
-            <span id="typed-features"></span>
-          </div>
-
-          <div class="hero-pills">
-            <span class="hero-pill">End-to-end textile solutions</span>
-            <span class="hero-pill">On-time global shipments</span>
-            <span class="hero-pill">Data-driven production</span>
-          </div>
-
-          <div class="d-flex flex-wrap gap-2 mt-4">
-            <a href="#products" class="btn btn-cta">
-              <i class="fas fa-search me-2"></i>
-              Explore Products
-            </a>
-            <a href="#summary" class="btn btn-outline-light">
-              <i class="fas fa-info-circle me-2"></i>
-              Learn about LM Mills
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENT COUNTERS -->
-  <section class="achievement-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="achievement-number" data-count="350">0</div>
-            <div class="achievement-label">Satisfied Clients</div>
-          </div>
-        </div>
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <div class="achievement-number" data-count="42">0</div>
-            <div class="achievement-label">Countries Served</div>
-          </div>
-        </div>
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-industry"></i>
-            </div>
-            <div class="achievement-number" data-count="25">0</div>
-            <div class="achievement-label">Years Experience</div>
-          </div>
-        </div>
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div class="achievement-number" data-count="98">0</div>
-            <div class="achievement-label">On-Time Delivery</div>
-          </div>
-        </div>
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="achievement-number" data-count="15">0</div>
-            <div class="achievement-label">Industry Awards</div>
-          </div>
-        </div>
-        <div class="col-md-2 col-6 mb-4">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <i class="fas fa-recycle"></i>
-            </div>
-            <div class="achievement-number" data-count="85">0</div>
-            <div class="achievement-label">Sustainable Practices</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWS TICKER -->
-  <div class="news-ticker">
-    <div class="ticker-container">
-      <div class="ticker-item">
-        <i class="fas fa-newspaper"></i>
-        LM Mills wins "Sustainable Textile Manufacturer of the Year" award
-      </div>
-      <div class="ticker-item">
-        <i class="fas fa-newspaper"></i>
-        New production line increases capacity by 30%
-      </div>
-      <div class="ticker-item">
-        <i class="fas fa-newspaper"></i>
-        Partnership announced with major European fashion brand
-      </div>
-      <div class="ticker-item">
-        <i class="fas fa-newspaper"></i>
-        LM Mills achieves ISO 9001:2015 certification
-      </div>
-      <div class="ticker-item">
-        <i class="fas fa-newspaper"></i>
-        New eco-friendly dyeing process reduces water usage by 40%
-      </div>
-    </div>
-  </div>
-
-  <!-- HOME PAGE SUMMARY + SUB NAVBAR -->
-  <section id="summary">
-    <div class="container">
-
-      <!-- SUB NAVBAR comes BEFORE summary content -->
-      <div class="summary-subnav sticky-top">
-        <div class="d-flex flex-wrap align-items-center">         
-          <ul class="nav flex-wrap">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LM Mills - Premium Textile Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+   <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer" 
+/>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top main-nav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <div class="navbar-brand-logo">LM</div>
+          <span class="navbar-brand-text">LM Mills</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#summary">
+              <a class="nav-link active" href="index.html">
                 <i class="fas fa-home"></i>
-                <span>Home Summary</span>
+                <span>Home</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#history">
-                <i class="fas fa-history"></i>
-                <span>History</span>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="about.html"
+                role="button"
+              >
+                <i class="fas fa-building"></i>
+                <span>About</span>
               </a>
+              <ul class="dropdown-menu nav-dropdown">
+                <li>
+                  <div class="dropdown-header">
+                    <i class="fas fa-building"></i>
+                    About LM Mills
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="about.html#history">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Our History</div>
+                      <div class="dropdown-item-desc">
+                        Decades of weaving trust into every meter of fabric
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="about.html#mission">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Mission & Values</div>
+                      <div class="dropdown-item-desc">
+                        Our commitment to quality, sustainability and innovation
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="about.html#leadership">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Leadership Team</div>
+                      <div class="dropdown-item-desc">
+                        Meet the experts driving our textile innovation
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="about.html#certifications">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Certifications</div>
+                      <div class="dropdown-item-desc">
+                        ISO, OEKO-TEX and other quality standards we maintain
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#what-we-are">
-                <i class="fas fa-info-circle"></i>
-                <span>What We Are</span>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="products.html"
+                role="button"
+              >
+                <i class="fas fa-tshirt"></i>
+                <span>Products</span>
               </a>
+              <ul class="dropdown-menu nav-dropdown">
+                <li>
+                  <div class="dropdown-header">
+                    <i class="fas fa-tshirt"></i>
+                    Our Textile Products
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#apparel">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Apparel Fabrics</div>
+                      <div class="dropdown-item-desc">
+                        Cotton, blends and stretch fabrics for fashion industry
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#home-textiles">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Home Textiles</div>
+                      <div class="dropdown-item-desc">
+                        Sheeting, towels and upholstery for home furnishing
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#technical">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Technical Textiles</div>
+                      <div class="dropdown-item-desc">
+                        High-performance fabrics for workwear and industrial use
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#sustainability">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Sustainable Options</div>
+                      <div class="dropdown-item-desc">
+                        Eco-friendly fabrics with reduced environmental impact
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#infrastructure">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="infrastructure.html"
+                role="button"
+              >
                 <i class="fas fa-industry"></i>
                 <span>Infrastructure</span>
               </a>
+              <ul class="dropdown-menu nav-dropdown">
+                <li>
+                  <div class="dropdown-header">
+                    <i class="fas fa-industry"></i>
+                    Our Manufacturing Facilities
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="infrastructure.html#spinning">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Spinning Division</div>
+                      <div class="dropdown-item-desc">
+                        Modern spinning frames for consistent yarn quality
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="infrastructure.html#weaving">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Weaving Division</div>
+                      <div class="dropdown-item-desc">
+                        Air-jet and rapier looms for diverse fabric
+                        constructions
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="infrastructure.html#processing"
+                  >
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">
+                        Processing & Finishing
+                      </div>
+                      <div class="dropdown-item-desc">
+                        Advanced dyeing and finishing for perfect hand-feel
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="infrastructure.html#quality">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Quality Control</div>
+                      <div class="dropdown-item-desc">
+                        Digital tracking and inline inspection systems
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="contact.html"
+                role="button"
+              >
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+              </a>
+              <ul class="dropdown-menu nav-dropdown">
+                <li>
+                  <div class="dropdown-header">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="contact.html#sales">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Sales Enquiries</div>
+                      <div class="dropdown-item-desc">
+                        Connect with our sales team for product information
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="contact.html#samples">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Request Samples</div>
+                      <div class="dropdown-item-desc">
+                        Get fabric swatches for your evaluation and testing
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="contact.html#support">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Customer Support</div>
+                      <div class="dropdown-item-desc">
+                        Technical assistance and after-sales service
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="contact.html#visit">
+                    <div class="dropdown-item-content">
+                      <div class="dropdown-item-title">Visit Our Facility</div>
+                      <div class="dropdown-item-desc">
+                        Schedule a tour of our manufacturing plant
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
-        </div>
-      </div>
-
-      <!-- SUMMARY CONTENT -->
-      <span class="pill-tag">Home Page Summary</span>
-      <h2 class="section-title">
-        From fiber to finished fabric – in one connected mill.
-      </h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-industry"></i>
-            </div>
-            <h5>End-to-end textile expertise</h5>
-            <p class="mb-0">
-              Spinning, weaving, processing and finishing under one roof to
-              keep every stage controlled and traceable.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-boxes"></i>
-            </div>
-            <h5>Flexible production runs</h5>
-            <p class="mb-0">
-              From boutique quantities to large international orders, LM Mills
-              adapts capacity without compromising quality.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <h5>Sustainable mindset</h5>
-            <p class="mb-0">
-              Optimized water, energy and chemical usage that align with
-              leading global compliance standards.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENTS SECTION -->
-  <section class="clients-section">
-    <div class="container">
-      <span class="pill-tag">Our Partners</span>
-      <h2 class="section-title">Trusted by leading brands worldwide</h2>
-      <div class="row g-4 align-items-center">
-        <div class="col-md-3 col-6">
-          <div class="client-logo">
-            <!-- Placeholder for client logo - replace with actual images -->
-            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-              <span style="color: #666; font-weight: 600;">FASHION CO</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="client-logo">
-            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-              <span style="color: #666; font-weight: 600;">HOME TEXTILES</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="client-logo">
-            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-              <span style="color: #666; font-weight: 600;">TECH WEAR</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="client-logo">
-            <div style="background: #f0f0f0; width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-              <span style="color: #666; font-weight: 600;">GLOBAL BRAND</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / HISTORY -->
-  <section id="about">
-    <div class="container">
-      <span class="pill-tag" id="history">History</span>
-      <h2 class="section-title">Decades of weaving trust into every meter.</h2>
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <p>
-            LM Mills began as a small weaving unit focused on dependable fabrics
-            for local brands. Over time we have become an integrated textile
-            manufacturer serving customers across multiple continents.
-          </p>
-          <p>
-            Our growth has always been driven by understanding what designers
-            need and investing in technology that keeps us reliable, consistent
-            and fast.
-          </p>
-        </div>
-        <div class="col-lg-6" id="what-we-are">
-          <h5>What we are today</h5>
-          <ul class="mb-0">
-            <li>Technology-driven mill optimized for repeatable quality.</li>
-            <li>Partner for fashion, home & technical textile brands.</li>
-            <li>Long-term, relationship-focused supplier.</li>
-            <li>Early adopter of automation & data-driven planning.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="container">
-      <span class="pill-tag">Products</span>
-      <h2 class="section-title">Textile ranges tailored to your market.</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-tshirt"></i>
-            </div>
-            <h5>Apparel fabrics</h5>
-            <p class="mb-0">
-              Cotton, blends and stretch fabrics designed for comfort and modern
-              silhouettes, ready for dyeing, printing or garmenting.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-home"></i>
-            </div>
-            <h5>Home textiles</h5>
-            <p class="mb-0">
-              Sheeting, towels and upholstery bases produced for durability,
-              hand-feel and color retention wash after wash.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-tools"></i>
-            </div>
-            <h5>Specialty & technical</h5>
-            <p class="mb-0">
-              High-performance fabrics for workwear and industrial use with
-              controlled strength, shrinkage and finishing.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INFRASTRUCTURE -->
-  <section id="infrastructure">
-    <div class="container">
-      <span class="pill-tag">Infrastructure</span>
-      <h2 class="section-title">Infrastructure engineered for consistent output.</h2>
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-spinner"></i>
-            </div>
-            <h5>Spinning & weaving</h5>
-            <p class="mb-0">
-              Modern spinning frames and air-jet/rapier looms give us the
-              flexibility to produce a wide count and construction range.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-flask"></i>
-            </div>
-            <h5>Processing & finishing</h5>
-            <p class="mb-0">
-              Continuous bleaching, dyeing and finishing lines tuned for shade
-              accuracy, hand-feel and low defects.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="feature-card">
-            <div class="feature-icon-circle">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h5>Digital quality tracking</h5>
-            <p class="mb-0">
-              Inline inspections, lab testing and real-time dashboards make our
-              mill behave like a monitored cloud platform.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <span class="pill-tag">Contact</span>
-      <h2 class="section-title">Let's talk about your next fabric program.</h2>
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">
-                <i class="fas fa-user me-1"></i>
-                Name
-              </label>
-              <input type="text" class="form-control" placeholder="Your name" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">
-                <i class="fas fa-envelope me-1"></i>
-                Email
-              </label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="you@company.com"
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">
-                <i class="fas fa-comment me-1"></i>
-                Message
-              </label>
-              <textarea
-                class="form-control"
-                rows="4"
-                placeholder="Tell us about your fabric or program requirements..."
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-cta">
-              <i class="fas fa-paper-plane me-2"></i>
-              Send enquiry
+          <div class="d-none d-lg-flex ms-3">
+            <button class="btn btn-cta">
+              <i class="fas fa-box-open me-2"></i>
+              Request a Sample
             </button>
-          </form>
-        </div>
-        <div class="col-lg-6">
-          <h5>
-            <i class="fas fa-building me-2"></i>
-            LM Mills – Head Office
-          </h5>
-          <p>
-            <i class="fas fa-map-marker-alt me-2"></i>
-            (Your address line here)<br />
-            City, State, Country<br />
-          </p>
-          <p class="mb-1">
-            <i class="fas fa-phone me-2"></i>
-            Phone: +91-00000-00000
-          </p>
-          <p class="mb-3">
-            <i class="fas fa-envelope me-2"></i>
-            Email: sales@lmmills.example
-          </p>
-          <p class="mb-0">
-            <i class="fas fa-clock me-2"></i>
-            We typically respond within one business day for all fabric
-            enquiries, sampling requests and capacity planning.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="footer-logo">LM Mills</div>
-          <p>Turning yarn into reliable fabrics for global fashion, home and technical brands.</p>
-          <div class="social-links">
-            <a href="#" class="social-link">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <div class="footer-links">
-            <h5>Company</h5>
-            <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="#history">History</a></li>
-              <li><a href="#infrastructure">Infrastructure</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">News</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <div class="footer-links">
-            <h5>Products</h5>
-            <ul>
-              <li><a href="products.html">Apparel Fabrics</a></li>
-              <li><a href="products.html">Home Textiles</a></li>
-              <li><a href="products.html">Technical Textiles</a></li>
-              <li><a href="#">Sustainability</a></li>
-              <li><a href="#">Request Samples</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <div class="footer-links">
-            <h5>Support</h5>
-            <ul>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Quality Standards</a></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-2 mb-4">
-          <div class="footer-links">
-            <h5>Legal</h5>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Cookie Policy</a></li>
-              <li><a href="#">Compliance</a></li>
-            </ul>
           </div>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <div>
-          <i class="fas fa-copyright me-1"></i>
-          <span id="year"></span> LM Mills. All rights reserved.
-        </div>
-        <div>
-          <i class="fas fa-heart me-1"></i>
-          Made for LM Mills • Inspired by Azure's clean, connected experience.
+    </nav>
+
+    <section id="hero">
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source src="assets/videos/videoplayback.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content">
+        <div class="row">
+          <div class="col-lg-7 col-md-9">
+            <div class="hero-badge">
+              <div class="hero-badge-dot"></div>
+              <span>Premium Textile Manufacturer Since 1998</span>
+            </div>
+
+            <h1 class="hero-title">
+              Chaos doesn't scale.<br />
+              <span class="hero-gradient-text">Consistent textiles do.</span>
+            </h1>
+            <p class="hero-subtitle">
+              LM Mills turns yarn into reliable fabrics for global fashion, home
+              and technical brands – with every meter tracked like a cloud
+              workload.
+            </p>
+
+            <div class="typed-wrapper">
+              <span class="typed-label">We deliver</span>
+              <span id="typed-features"></span>
+            </div>
+
+            <div class="hero-pills">
+              <span class="hero-pill">End-to-end textile solutions</span>
+              <span class="hero-pill">On-time global shipments</span>
+              <span class="hero-pill">Data-driven production</span>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#products" class="btn btn-cta">
+                <i class="fas fa-search me-2"></i>
+                Explore Products
+              </a>
+              <a href="#summary" class="btn btn-ghost-light">
+                <i class="fas fa-info-circle me-2"></i>
+                Learn about LM Mills
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- jQuery (free) -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Bootstrap JS (free) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Typed.js (free, MIT) -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <section id="summary">
+      <div class="container">
+        <div class="summary-subnav sticky-top">
+          <div class="summary-subnav-inner">
+            <div class="summary-subnav-title">
+              <i class="fas fa-route"></i>
+              <div>
+                <span class="label d-block">Page map</span>
+                <span class="text">Quick jump to key sections</span>
+              </div>
+            </div>
+            <div class="summary-subnav-scroll">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#summary">
+                    <i class="fas fa-home"></i>
+                    <span>Home Summary</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#history">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#what-we-are">
+                    <i class="fas fa-info-circle"></i>
+                    <span>What We Are</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#infrastructure">
+                    <i class="fas fa-industry"></i>
+                    <span>Infrastructure</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-  <script>
-    // Typed.js feature text
-    document.addEventListener("DOMContentLoaded", function () {
-      new Typed("#typed-features", {
-        strings: [
-          "Premium cotton fabrics.",
-          "On-time global deliveries.",
-          "Consistent shade and hand-feel.",
-          "Smart, data-driven production.",
-        ],
-        typeSpeed: 45,
-        backSpeed: 25,
-        backDelay: 1600,
-        loop: true,
-      });
+        <span class="pill-tag">Home Page Summary</span>
+        <h2 class="section-title">
+          From fiber to finished fabric – in one connected mill.
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-industry"></i>
+              </div>
+              <h5>End-to-end textile expertise</h5>
+              <p class="mb-0">
+                Spinning, weaving, processing and finishing under one roof to
+                keep every stage controlled and traceable.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-boxes"></i>
+              </div>
+              <h5>Flexible production runs</h5>
+              <p class="mb-0">
+                From boutique quantities to large international orders, LM Mills
+                adapts capacity without compromising quality.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h5>Sustainable mindset</h5>
+              <p class="mb-0">
+                Optimized water, energy and chemical usage that align with
+                leading global compliance standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Current year
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
+    <section id="about">
+      <div class="container">
+        <span class="pill-tag" id="history">History</span>
+        <h2 class="section-title">
+          Decades of weaving trust into every meter.
+        </h2>
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-right">
+            <p>
+              LM Mills began as a small weaving unit focused on dependable
+              fabrics for local brands. Over time we have become an integrated
+              textile manufacturer serving customers across multiple continents.
+            </p>
+            <p>
+              Our growth has always been driven by understanding what designers
+              need and investing in technology that keeps us reliable,
+              consistent and fast.
+            </p>
+          </div>
+          <div class="col-lg-6" id="what-we-are" data-aos="fade-left">
+            <h5>What we are today</h5>
+            <ul class="mb-0">
+              <li>Technology-driven mill optimized for repeatable quality.</li>
+              <li>Partner for fashion, home & technical textile brands.</li>
+              <li>Long-term, relationship-focused supplier.</li>
+              <li>Early adopter of automation & data-driven planning.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Achievement counter animation
-      function animateCounter() {
-        const counters = document.querySelectorAll('.achievement-number');
-        const speed = 200; // The lower the slower
-        
-        counters.forEach(counter => {
-          const updateCount = () => {
-            const target = +counter.getAttribute('data-count');
-            const count = +counter.innerText;
-            
-            // Lower inc to slow and higher to slow
-            const inc = target / speed;
-            
-            // Check if target is reached
-            if (count < target) {
-              // Add inc to count and output in counter
-              counter.innerText = Math.ceil(count + inc);
-              // Call function every ms
-              setTimeout(updateCount, 1);
-            } else {
-              counter.innerText = target;
-            }
-          };
-          
-          updateCount();
-        });
-      }
-      
-      // Start counter animation when section is in view
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounter();
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      const achievementSection = document.querySelector('.achievement-section');
-      if (achievementSection) {
-        observer.observe(achievementSection);
-      }
-    });
+    <section id="products">
+      <div class="container">
+        <span class="pill-tag">Products</span>
+        <h2 class="section-title">Textile ranges tailored to your market.</h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <h5>Apparel fabrics</h5>
+              <p class="mb-0">
+                Cotton, blends and stretch fabrics designed for comfort and
+                modern silhouettes, ready for dyeing, printing or garmenting.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-home"></i>
+              </div>
+              <h5>Home textiles</h5>
+              <p class="mb-0">
+                Sheeting, towels and upholstery bases produced for durability,
+                hand-feel and color retention wash after wash.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h5>Specialty & technical</h5>
+              <p class="mb-0">
+                High-performance fabrics for workwear and industrial use with
+                controlled strength, shrinkage and finishing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    // Scroll behavior: hide main nav after hero, show before hero
-    $(window).on("scroll", function () {
-      var scrollTop = $(this).scrollTop();
-      var heroHeight = $("#hero").outerHeight() || 300;
+    <section id="infrastructure">
+      <div class="container">
+        <span class="pill-tag">Infrastructure</span>
+        <h2 class="section-title">
+          Infrastructure engineered for consistent output.
+        </h2>
+        <div class="row g-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-spinner"></i>
+              </div>
+              <h5>Spinning & weaving</h5>
+              <p class="mb-0">
+                Modern spinning frames and air-jet/rapier looms give us the
+                flexibility to produce a wide count and construction range.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h5>Processing & finishing</h5>
+              <p class="mb-0">
+                Continuous bleaching, dyeing and finishing lines tuned for shade
+                accuracy, hand-feel and low defects.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon-circle">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h5>Digital quality tracking</h5>
+              <p class="mb-0">
+                Inline inspections, lab testing and real-time dashboards make
+                our mill behave like a monitored cloud platform.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      if (scrollTop > heroHeight - 80) {
-        $(".main-nav").addClass("nav-hidden");
-      } else {
-        $(".main-nav").removeClass("nav-hidden");
-      }
-    });
+    <section class="achievement-section">
+      <div class="container achievement-shell">
+        <!-- <div
+          class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2"
+        >
+          <div>
+            <span class="pill-tag">Snapshot</span>
+            <h2 class="section-title text-white mb-0" style="font-size: 2rem">
+              Scale and reliability you can measure.
+            </h2>
+          </div>
+          <p class="mb-0 achievement-meta">
+            <i class="fas fa-circle-info me-1"></i>
+            Metrics based on the last 3 years of production.
+          </p>
+        </div> -->
 
-    // Smooth scroll for internal links (main nav + sub nav)
-    $(document).on("click", 'a[href^="#"]', function (e) {
-      var target = $($(this).attr("href"));
-      if (target.length) {
-        e.preventDefault();
-        $("html, body").animate(
-          {
-            scrollTop: target.offset().top - 80,
-          },
-          500
-        );
-      }
-    });
-  </script>
-</body>
+        <div class="row text-center g-3">
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="achievement-number" data-count="350">0</div>
+              <div class="achievement-label">Satisfied Clients</div>
+              <div class="achievement-meta">
+                Brands served across apparel, home & technical.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="achievement-number" data-count="42">0</div>
+              <div class="achievement-label">Countries Served</div>
+              <div class="achievement-meta">
+                Deliveries across key fashion hubs worldwide.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-industry"></i>
+              </div>
+              <div class="achievement-number" data-count="25">0</div>
+              <div class="achievement-label">Years Experience</div>
+              <div class="achievement-meta">
+                Two and a half decades of fabric know-how.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="achievement-number" data-count="98">0</div>
+              <div class="achievement-label">On-Time Delivery</div>
+              <div class="achievement-meta">
+                Average OTIF for committed dispatch dates.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <div class="achievement-number" data-count="15">0</div>
+              <div class="achievement-label">Industry Awards</div>
+              <div class="achievement-meta">
+                Recognised for quality & sustainability.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="achievement-card">
+              <div class="achievement-icon">
+                <i class="fas fa-recycle"></i>
+              </div>
+              <div class="achievement-number" data-count="85">0</div>
+              <div class="achievement-label">Sustainable Practices</div>
+              <div class="achievement-meta">
+                Production volume under certified programs.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="clients-section" id="clients">
+      <div class="container position-relative">
+        <div class="row align-items-center mb-4">
+          <div class="col-lg-7">
+            <span class="pill-tag">Our Partners</span>
+            <h2 class="section-title">Trusted by leading brands worldwide.</h2>
+            <p class="clients-lead">
+              From fast-moving fashion houses to technical workwear specialists,
+              LM Mills supports fabric programs that need reliability at scale.
+            </p>
+          </div>
+        </div>
+
+        <div class="clients-row-wrapper">
+          <div class="clients-row">
+            <div class="client-card" data-aos="fade-up" data-aos-delay="50">
+              <div class="client-logo-wrap">
+                <div class="client-logo-badge">
+                  <i class="fas fa-shirt"></i>
+                </div>
+                <div>
+                  <div class="client-logo-text">Fashion Co.</div>
+                  <div class="client-logo-sub">Apparel • Europe</div>
+                </div>
+              </div>
+              <div class="client-metrics">
+                <span class="client-pill">
+                  <i class="fas fa-check-circle"></i> 8+ years
+                </span>
+                <span class="client-tier">Core apparel fabrics</span>
+              </div>
+            </div>
+
+            <div class="client-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="client-logo-wrap">
+                <div class="client-logo-badge">
+                  <i class="fas fa-couch"></i>
+                </div>
+                <div>
+                  <div class="client-logo-text">Home Textiles</div>
+                  <div class="client-logo-sub">Home • North America</div>
+                </div>
+              </div>
+              <div class="client-metrics">
+                <span class="client-pill">
+                  <i class="fas fa-check-circle"></i> 5+ years
+                </span>
+                <span class="client-tier">Bedding & sheeting</span>
+              </div>
+            </div>
+
+            <div class="client-card" data-aos="fade-up" data-aos-delay="150">
+              <div class="client-logo-wrap">
+                <div class="client-logo-badge">
+                  <i class="fas fa-helmet-safety"></i>
+                </div>
+                <div>
+                  <div class="client-logo-text">Tech Wear</div>
+                  <div class="client-logo-sub">Technical • Asia</div>
+                </div>
+              </div>
+              <div class="client-metrics">
+                <span class="client-pill">
+                  <i class="fas fa-check-circle"></i> 6+ years
+                </span>
+                <span class="client-tier">Industrial & workwear</span>
+              </div>
+            </div>
+
+            <div class="client-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="client-logo-wrap">
+                <div class="client-logo-badge">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <div>
+                  <div class="client-logo-text">Global Brand</div>
+                  <div class="client-logo-sub">Multi-category • Global</div>
+                </div>
+              </div>
+              <div class="client-metrics">
+                <span class="client-pill">
+                  <i class="fas fa-check-circle"></i> 10+ years
+                </span>
+                <span class="client-tier">Programs across categories</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="clients-footnote">
+            <i class="fas fa-shield-heart me-1"></i>
+            Names are indicative to respect client confidentiality, but the
+            partnership profiles are real.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <span class="pill-tag">Contact</span>
+        <h2 class="section-title">
+          Let's talk about your next fabric program.
+        </h2>
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-right">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">
+                  <i class="fas fa-user me-1"></i>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Your name"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">
+                  <i class="fas fa-envelope me-1"></i>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="you@company.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">
+                  <i class="fas fa-comment me-1"></i>
+                  Message
+                </label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Tell us about your fabric or program requirements..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-cta">
+                <i class="fas fa-paper-plane me-2"></i>
+                Send enquiry
+              </button>
+            </form>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <h5>
+              <i class="fas fa-building me-2"></i>
+              LM Mills – Head Office
+            </h5>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i>
+              Textile Industrial Zone, Sector 18<br />
+              Mumbai, Maharashtra 400001<br />
+              India
+            </p>
+            <p class="mb-1">
+              <i class="fas fa-phone me-2"></i>
+              Phone: +91-22-1234-5678
+            </p>
+            <p class="mb-3">
+              <i class="fas fa-envelope me-2"></i>
+              Email: sales@lmmills.com
+            </p>
+            <p class="mb-0">
+              <i class="fas fa-clock me-2"></i>
+              We typically respond within one business day for all fabric
+              enquiries, sampling requests and capacity planning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <div class="footer-logo">LM Mills</div>
+            <p>
+              Turning yarn into reliable fabrics for global fashion, home and
+              technical brands.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="footer-links">
+              <h5>Company</h5>
+              <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#infrastructure">Infrastructure</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">News</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="footer-links">
+              <h5>Products</h5>
+              <ul>
+                <li><a href="products.html">Apparel Fabrics</a></li>
+                <li><a href="products.html">Home Textiles</a></li>
+                <li><a href="products.html">Technical Textiles</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Request Samples</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="footer-links">
+              <h5>Support</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Quality Standards</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 mb-4">
+            <div class="footer-links">
+              <h5>Legal</h5>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Compliance</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center"
+        >
+          <div>
+            <i class="fas fa-copyright me-1"></i>
+            <span id="year"></span> LM Mills. All rights reserved.
+          </div>
+          <div>
+            <i class="fas fa-heart me-1"></i>
+            Made for LM Mills • Inspired by Azure's clean, connected experience.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="scripts/index.js"></script>
+  </body>
 </html>
