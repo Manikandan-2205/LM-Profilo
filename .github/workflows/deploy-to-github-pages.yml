@@ -1,1 +1,32 @@
 
+name: Deploy Blazor to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Trigger on push to the main branch
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x # Set your specific .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build and publish
+      run: dotnet publish -c Release -o output --no-restore
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: output/wwwroot # The folder containing the static files
+        branch: gh-pages # The branch to deploy to
