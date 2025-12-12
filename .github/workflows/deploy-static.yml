@@ -24,7 +24,7 @@ jobs:
 
       - name: Start published app (background)
         run: |
-          nohup dotnet ./publish/YourAppAssemblyName.dll --urls http://localhost:5000 > app.log 2>&1 &
+          nohup dotnet ./publish/PrimeGarmentsPhase1.dll --urls http://localhost:5000 > app.log 2>&1 &
           # wait for the server to start responding
           for i in {1..30}; do
             if curl -sSf http://localhost:5000 >/dev/null; then echo "Server up"; break; fi
