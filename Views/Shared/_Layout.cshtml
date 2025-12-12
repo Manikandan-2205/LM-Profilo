@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lakshmi Tex • Premium Garment Manufacturing</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="~/css/lakshmi-main.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div id="preloader">
+        <svg class="shirt-svg" viewBox="0 0 24 24">
+            <path d="M20.38 3.46L16 2l-4 6-4-6-4.38 1.46a2 2 0 0 0-1.22 2.28l1.3 9.2A4 4 0 0 0 7.66 18h8.68a4 4 0 0 0 3.96-3.06l1.3-9.2a2 2 0 0 0-1.22-2.28z" />
+        </svg>
+        <div class="loader-text">Lakshmi Tex is Loading...</div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="~/media/logo/logo.png" alt="Lakshmi Tex Logo" class="logo-img">
+                <div class="logo-text-wrapper">
+                    <span class="brand-text">LAKSHMI TEX</span>
+                </div>
+            </a>
+            <div class="nav-main">
+                <div class="nav-item"><a href="#home" class="nav-link">Home</a></div>
+                <div class="nav-item">
+                    <div class="nav-link">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <a href="#about" class="dropdown-item"><i class="fa-solid fa-building"></i> <span>About Us</span></a>
+                        <a href="#achievements" class="dropdown-item"><i class="fa-solid fa-certificate"></i> <span>Certifications</span></a>
+                        <a href="#testimonials-section" class="dropdown-item"><i class="fa-solid fa-users"></i> <span>Clients</span></a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-link">Production <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <a href="#process-overview" class="dropdown-item"><i class="fa-solid fa-layer-group"></i> <span>Process Overview</span></a>
+                        <a href="#capability" class="dropdown-item"><i class="fa-solid fa-industry"></i> <span>Infrastructure</span></a>
+                        <a href="#achievements" class="dropdown-item"><i class="fa-solid fa-leaf"></i> <span>Sustainability</span></a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-link">Products <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="dropdown-menu wide">
+                        <a href="#products" class="dropdown-item"><i class="fa-solid fa-shirt"></i> <span>Knitwear Collection</span></a>
+                        <a href="#products" class="dropdown-item"><i class="fa-solid fa-person-running"></i> <span>Activewear</span></a>
+                        <a href="#products" class="dropdown-item"><i class="fa-solid fa-scroll"></i> <span>Fabric Catalog</span></a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-link">Resources <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> <span>Company Blog</span></a>
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-briefcase"></i> <span>Careers</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="#contact" class="nav-link">Contact</a></div>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+                <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div class="f-col">
+                    <h3 class="f-head" style="font-size:1.6rem;">LAKSHMI TEX</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.7; max-width:300px;">
+                        "We weave the future of fashion. Excellence in every thread."
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="f-col">
+                    <h4 class="f-head tech-font">Quick Links</h4>
+                    <a href="#about" class="f-link">About Us</a>
+                    <a href="#process-overview" class="f-link">Process Flow</a>
+                    <a href="#capability" class="f-link">Infrastructure</a>
+                    <a href="#achievements" class="f-link">Achievements</a>
+                </div>
+                <div class="f-col">
+                    <h4 class="f-head tech-font">Products</h4>
+                    <a href="#products" class="f-link">Knitwear</a>
+                    <a href="#products" class="f-link">Activewear</a>
+                    <a href="#products" class="f-link">Performance Fabrics</a>
+                </div>
+                <div class="f-col">
+                    <h4 class="f-head tech-font">Legal & Support</h4>
+                    <a href="#" class="f-link">Terms & Condition</a>
+                    <a href="#" class="f-link">Privacy Policy</a>
+                    <a href="#contact" class="f-link">Contact Support</a>
+                </div>
+            </div>
+            <div class="f-bottom">© 2025 Lakshmi Tex Pvt Ltd. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/lakshmi-core.js" asp-append-version="true"></script>
+</body>
+</html>

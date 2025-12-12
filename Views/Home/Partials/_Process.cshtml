@@ -1,0 +1,49 @@
+<section id="process-overview">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="subtitle">PROCESS OVERVIEW</span>
+            <h2 class="title">Integrated Production Cycle</h2>
+            <p>Seamless vertical integration guarantees precision and efficiency at every stage, from raw material to final pack.</p>
+        </div>
+
+        <div class="donut-layout-wrap reveal">
+            <div class="donut-container" id="donutRoot" aria-label="Spinning process donut" role="region">
+                <svg id="donutSvg" viewBox="0 0 520 520" width="100%" height="100%" role="img">
+                    <defs id="defsArea">
+                        <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.12" />
+                        </filter>
+                    </defs>
+                    <g id="rotGroup" class="rotating spin"></g>
+                    <circle cx="260" cy="260" r="98" fill="#020d24" opacity="0.95"></circle>
+                    <circle class="outer-ring" cx="260" cy="260" r="215" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"></circle>
+                </svg>
+
+                <div class="center-label" id="centerLabel" aria-hidden="true">
+                    <div class="c-subtitle">PHASE</div>
+                    <div class="c-title" id="centerTitle">Yarn</div>
+                </div>
+            </div>
+
+            <div class="process-detail-card" id="detailCard">
+                <span class="pd-number" id="pdNum">01</span>
+                <h3 class="pd-title" id="pdTitle">Yarn Sourcing</h3>
+                <p class="pd-desc" id="pdDesc">
+                    We source the finest organic cotton and blends. Our 25,000 spindle setup produces combed, compact, and siro yarns ensuring a defect-free base.
+                </p>
+                <div class="pd-video-wrap">
+                    <video id="pdVideo" class="pd-video" autoplay muted loop playsinline>
+                        <source src="https://cdn.pixabay.com/video/2021/09/11/88235-602915735_small.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="controls-row">
+                    <button id="prevBtn" class="control-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="spinToggle" class="control-btn" style="border-radius:20px; width:auto; padding:0 15px; font-size:0.8rem;">
+                        <i class="fa-solid fa-pause" style="margin-right:6px;"></i> Pause
+                    </button>
+                    <button id="nextBtn" class="control-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

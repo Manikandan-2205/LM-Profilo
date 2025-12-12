@@ -1,0 +1,32 @@
+<header class="hero" id="home">
+    <div class="hero-bg">
+        <div class="hero-media-container">
+            <video id="hero-video" class="hero-video active" autoplay muted playsinline loop
+                   poster="https://cdn.pixabay.com/photo/2016/11/29/02/58/sewing-machine-1866924_1280.jpg">
+                <source src="~/media/home/Garments_Factory_Cinematic_Video.mp4" type="video/mp4">
+            </video>
+            <img id="slide-1" class="hero-slide" src="~/media/home/garments.png" alt="Garment Factory Overview">
+            <img id="slide-2" class="hero-slide" src="~/media/home/spinning.png" alt="Textile Dyeing Machinery">
+            <img id="slide-3" class="hero-slide" src="~/media/home/knitting.png" alt="Automated Knitting Machines">
+        </div>
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-left reveal">
+            <div class="hero-badge">
+                <i class="fa-solid fa-star"></i> VERTICAL INTEGRATION • PREMIUM KNITS
+            </div>
+            <h1 class="hero-title">
+                Weaving the <br> fabric of <span id="typewriter"></span><span class="type-cursor"></span>
+            </h1>
+            <p class="hero-desc">
+                From organic yarn sourcing to high-precision garmenting. We are the <strong>silent engine</strong> behind the
+                world's leading fashion labels, delivering <strong>ethical manufacturing</strong> and technical excellence.
+            </p>
+            <div class="btn-group">
+                <button class="btn" onclick="document.getElementById('process-overview').scrollIntoView({behavior:'smooth'})">Process Overview</button>
+                <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start RFQ</button>
+            </div>
+        </div>
+    </div>
+</header>

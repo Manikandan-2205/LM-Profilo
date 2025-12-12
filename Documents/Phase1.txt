@@ -1,0 +1,64 @@
+Home=>
+
+Main Navbar
+logo brand	
+Home,About,Process,Infrastructure,Product,Resources(Blogs,Careers),Contact   quickActions-> Enquire
+
+
+ home=>
+Hero Section
+	
+Sub Navbar
+Featured,Process Overview,Capability,Achivements,Testimonials,Contact
+
+Featured
+	Who we are ?
+	What unique from us ?
+Process Overview
+	What we do?
+	From Yarn To Finalize.
+Capability:
+	What we have ?
+	Our potentials?
+Products & Services:
+	1.
+Achivements:
+	Exprience,TurnOver,Branches,Goals.,,,
+	Environment :
+	Certificates
+Testimonials:
+	Clients Summary, Ratings,Brandings
+
+Contact Enquires:
+	Enquiry form 
+Footer :
+	Branding,
+	Social media links,
+	Quick links,
+	Products,
+	Contact address ,PhNo,Email
+	Terms &Condition, Privacy Plolicy,
+	Trademark
+	Quotes
+
+About=> 
+
+about the company
+History
+Achivements
+Cerificates 
+Client
+
+
+
+Meha
+	Hero,Nav,Process
+Mani
+	Achivements,Testimonials,
+Gv
+	Featured,Capability,Products & Services	
+GK
+	Contact Enquires,Footer 
+Pav
+	
+

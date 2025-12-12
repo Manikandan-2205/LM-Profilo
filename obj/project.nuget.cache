@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "UH76V24ktk4=",
+  "success": true,
+  "projectFilePath": "D:\\Manikandan\\E - Manikandan\\webplish\\LM-Profilo\\PrimeGarmentsPhase1.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://192.23.2.36:20270/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}

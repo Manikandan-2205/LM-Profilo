@@ -1,0 +1,6 @@
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\PrimeGarmentsPhase1.exe
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\appsettings.json
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\PrimeGarmentsPhase1.dll
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\PrimeGarmentsPhase1.deps.json
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\PrimeGarmentsPhase1.runtimeconfig.json
+D:\Manikandan\E - Manikandan\webplish\LM-Profilo\bin\Release\net8.0\publish\PrimeGarmentsPhase1.pdb
