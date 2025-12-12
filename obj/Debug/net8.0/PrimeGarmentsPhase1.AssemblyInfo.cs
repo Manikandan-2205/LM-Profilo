@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrimeGarmentsPhase1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+245730ade7d146b884e0e2dd67240349d946dfe4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e72a93d423969f66685283e5d3c29e5ef9b9904")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrimeGarmentsPhase1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrimeGarmentsPhase1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,47 @@
+name: Build & Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore & Publish
+        run: |
+          dotnet restore
+          dotnet publish -c Release -o ./publish
+
+      - name: Start published app (background)
+        run: |
+          nohup dotnet ./publish/YourAppAssemblyName.dll --urls http://localhost:5000 > app.log 2>&1 &
+          # wait for the server to start responding
+          for i in {1..30}; do
+            if curl -sSf http://localhost:5000 >/dev/null; then echo "Server up"; break; fi
+            sleep 1
+          done
+
+      - name: Install wget
+        run: sudo apt-get update && sudo apt-get install -y wget
+
+      - name: Mirror site with wget
+        run: |
+          mkdir -p static-site
+          wget -m -p -E -k -K -np http://localhost:5000 -P ./static-site
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./static-site/localhost:5000
